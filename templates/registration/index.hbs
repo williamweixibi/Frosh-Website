@@ -1,0 +1,228 @@
+<section class="section content row">
+    <div class="side col">
+        {{#linkTo 'index'}}<div class="registration-logo"></div>{{/linkTo}}
+    </div>
+    <div class="main col">
+        <section class="box normal">
+            <h2>Why register?</h2>
+            <ul class="registration-side">
+                <li>Access to <strong>ALL</strong> events except Hart House Farm.</li>
+                <li>An incredible F!rosh Kit with tons of cool stuff.</li>
+                <li>Free lunch and dinner on Monday and Tuesday.</li>
+                <li>One free Skule&trade; yearbook at the end of the year ($20 value).</li>
+            </ul>
+            <br>
+            
+            <h2>Other Payment Method</h2>
+            <p>
+                We accept cash too! Please visit Rhonda at the Engineering Society in Sandford Flemming building (B740 Sandford Fleming, 10 King's College Road) to drop off your cash payment, if you choose not to pay via credit card.
+            </p>
+        </section>
+    </div>
+
+    <div class="col">
+        <section class="box normal">
+            <h1>
+                <i class="icon-ticket"></i> Register online
+            </h1>
+            
+           
+            
+        <div {{bindAttr class=":registration-loader :center isLoading:showing:hidden"}}>
+            
+            <i class="icon-big-loader icon-spin icon-gear"></i>
+           
+        </div>
+            
+        <div {{bindAttr class=":registration-error :center isError:showing:hidden"}}>
+         <h3 style="color: crimson;">Timeout: Connection seems to have lost! Try refreshing the page or using incognito. If problem still persists, please contact <a href="mailto:support@orientation.skule.ca">support@orientation.skule.ca</a>  </h3>.    
+        </div>
+            
+        <div {{bindAttr class=":registration-data isLoaded:showing:hidden"}}>
+            {{#ifOnlinePurchase}} 
+            
+                <div class="row registration-row">
+                    <div class="float-right registration-price col-header col ">
+                        <h3>Price</h3>
+                        <hr>
+                    </div>
+                    <div class="float-right registration-item col-header col ">
+                        <h3>F!rosh Kit Package</h3>
+                        <hr>
+                    </div>
+                </div>
+            
+                <div class="row registration-row">
+                    <div class="registration-checkbox col">
+                        {{#if earlyBirdAvailable}}
+                            <input {{bindAttr id="earlyBird.key" value="earlyBird.price"}} type="checkbox" >        
+                            <label {{bindAttr for="earlyBird.key"}} ></label>
+                        {{else}}
+                            &nbsp;
+                        {{/if}}
+                        
+                    </div>
+                    <div class="registration-item  col">
+                        <h3><strong>{{earlyBird.name}}</strong> </h3>
+                        {{#if earlyBirdAvailable}}
+                            <h5 style="color:crimson;">* ONLY <strong>{{earlyBird.left}}</strong> LEFT *</h5>   
+                        {{/if}}
+                        <p>
+                            {{earlyBird.description}}
+                        </p>
+                        
+                    </div>
+                    <div  class="registration-price col ">
+                        <h3 class="float-right">
+                        {{#if earlyBirdAvailable}}
+                            <strong>${{earlyBird.price}} </strong>
+                        {{else}}
+                            <strong style="color:crimson;"> SOLD OUT</strong>
+                        {{/if}}
+                        </h3>
+                    </div>
+                </div>
+                
+                 <div class="row registration-row">
+                    <div class="registration-checkbox col">
+                        {{#if earlyBirdAvailable}}
+                            &nbsp;
+                        {{else}}
+                            <input {{bindAttr id="regular.key" value="regular.price"}} type="checkbox" >        
+                            <label {{bindAttr for="regular.key"}} ></label>
+                        {{/if}}
+                        
+                    </div>
+                    <div class="registration-item  col">
+                        <h3><strong>{{regular.name}}</strong> </h3>
+                        {{#if earlyBirdAvailable}}
+                            <h5 style="color:crimson;">* OPEN WHEN EARLY BIRDS ARE SOLD OUT *</h5>
+
+                        {{/if}}
+                        <p>
+                            {{regular.description}}
+                        </p>
+                    </div>
+                    <div  class="registration-price col ">
+                        <h3 class="float-right">
+                            <strong>${{regular.price}} </strong>
+                        </h3>
+                    </div>
+                </div>
+            
+                <div class="row registration-row">
+                    <div class=" registration-checkbox col">
+                          &nbsp;
+                    </div>
+                    <div class=" registration-item col-header col ">
+                        <h3>Add-ons</h3>
+                        <hr>
+                    </div>
+                </div>
+            {{#each model}} 
+                {{#ifAddons key}}
+                <div class="row registration-row">
+                    <div class="registration-checkbox col">
+                        {{#ifSoldOut left}}
+                        &nbsp;
+                        {{else}}
+                            <input {{bindAttr id="key" value="price"}} type="checkbox" disabled=disabled >
+                            <label {{bindAttr for="key"}}></label>
+                        {{/ifSoldOut}}
+                    </div>
+                    <div class="registration-item  col">
+                        <h3><strong>{{name}}</strong> </h3>
+                        {{#ifSoldOut left}}
+                            <h5 style="color:crimson;">* If you wish to purchase this add on, please contact <a href="mailto:support@orientation.skule.ca">support@orientation.skule.ca</a> for inquiries. *</h5> 
+                        {{/ifSoldOut}}
+                        <p>
+                            {{description}}
+                        </p>
+                    </div>
+                    <div  class="registration-price col ">
+                        <h3 class="float-right">
+                            {{#ifSoldOut left}}
+                            <strong style="color:crimson;"> SOLD OUT</strong>
+                            {{else}}
+                            <strong>${{price}} </strong>
+                            {{/ifSoldOut}}
+                        </h3>
+                    </div>
+                </div>
+                {{/ifAddons}}
+            {{/each}}
+                <div class="row registration-row">
+                    <div class="col registration-price float-right">
+                        <hr>
+                        <div class="float-right">
+                             <h3 ><strong>${{totalPrice}}</strong> </h3>
+                        </div>
+                    </div>
+                    <div class="col registration-item float-right">
+                        <div class="float-right">
+                            <br>
+                            <h3 >Total: 
+                                <span class="subtitle green"><strong>Tax included</strong></span>
+                            </h3>
+                        </div>
+
+                    </div>
+                
+                </div>
+                <div class="row registration-row">
+                    <div class="registration-checkbox col">
+                        &nbsp;
+                    </div>
+                    <div class="col registration-footer ">
+                        <br>
+                        <h6 >*If you encounter any problems or questions, please contact <a href="mailto:support@orientation.skule.ca">support@orientation.skule.ca</a></h6>
+
+                    </div>
+                        <div class="col registration-checkout float-right ">
+                            <div class="action-button float-right ">
+                                <button {{action "checkOutClicked"}} class="highlight"  {{bindAttr disabled=checkOutDisable }} >
+                                    <strong>Check Out!</strong>
+                                </button>
+                            </div>
+                        </div>
+                    
+
+                </div>
+            </div>
+            {{else}}
+                <h3>Missed online registration?</h3>
+                <p>
+                    <strong>You can still join us!</strong> Bring cash or credit on Monday between 7:30am and 9:00am
+                    to register at the door! Find us in front of Convocation Hall!
+                </p>
+                <p>
+                    There will be 3 items available at the door:
+                </p>
+                <ul>
+                    <li>
+                        <strong>$125</strong> F!rosh Kit Standalone Package.
+                    </li>
+                    <li>
+                        <strong>$40</strong> Hart House Farm Ticket.
+                    </li>
+                    <li>
+                        <strong>$145</strong> Commuter Package.
+                    </li>
+                </ul>
+                <p></p>
+                <iframe width="100%"
+                        height="400"
+                        frameborder="0"
+                        scrolling="no"
+                        marginheight="0"
+                        marginwidth="0"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1443.19161249509!2d-79.39489421779095!3d43.66099911026702!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882b34b88cfce265%3A0x5b6a860f6f34deaa!2sKing&#39;s+College+Rd+%26+Galbraith+Rd%2C+Toronto%2C+ON+M5S!5e0!3m2!1sen!2sca!4v1441434788369">
+                </iframe>
+            {{/ifOnlinePurchase}}
+            
+            
+                    
+            
+        </section>
+    </div>
+</section>

@@ -1,0 +1,129 @@
+/* Orientation Footer Styles
+ *
+ * This is the stylesheet for the footer view element.
+ *
+ * author:  John Liu
+ * version: 0.0.1
+ */
+
+@import 'library';
+@import 'core';
+
+$organization-image: 'engsoc.png';
+$snapchat-gray-image: 'icons/snapchat-gray.png';
+.footer {
+    @include screen-small {
+        text-align: center;
+        padding: { top: 1.5em; bottom: 1.5em; }
+
+        .half + .half, .align-right { text-align: center; };
+    }
+    @include screen-medium {
+        text-align: left;
+        padding: { top: 2.0em; bottom: 2.0em; }
+
+        .half + .half, .align-right { text-align: right; };
+    }
+    @include screen-large {
+        text-align: left;
+        padding: { top: 2.5em; bottom: 2.5em; }
+
+        .half + .half, .align-right { text-align: right; };
+    }
+    @include print {
+        display: none;
+    }
+
+    background: $white;
+    color: $black;
+
+    .icon {
+        margin: { right: 0.5em; };
+    }
+
+
+    .organization-logo {
+        @include box-sizing(border-box);
+
+        background: {
+            image: image-url($organization-image);
+            size: contain;
+            repeat: no-repeat;
+        }
+        display: inline-block;
+        margin: { top: 0.5em; bottom: 0.5em; }
+        height: image-height($organization-image);
+        width: image-width($organization-image);
+
+        @include screen-small   { background-position: center; }
+        @include screen-medium  { background-position: left; }
+        @include screen-large   { background-position: left; }
+    }
+
+    .hidden-links {
+        a:not(:hover) {
+            color: $white;
+        }
+    }
+}
+.snapchat-footer-icon {
+    display: inline-block;
+    background: {
+        image: image-url($snapchat-image);
+        size: contain;
+        position: center;
+        repeat: no-repeat;
+    };
+    position: relative;
+    cursor: pointer;
+    @include screen-small {
+        height: 24px;
+        width: 24px;
+        top: 0.15em;        
+	  };
+		@include screen-medium {
+        height: 25px;
+        width: 25px;
+        top: 0.15em; 
+		};
+		@include screen-large {
+        height: 31px;
+        width: 31px;
+        top: 0.15em;
+		};
+}
+
+.snapchat-footer-icon:hover {
+    background: {
+        image: image-url($snapchat-gray-image);
+        size: contain;
+        position: center;
+        repeat: no-repeat;
+    };
+}
+.snapchat-footer-box {
+    @include border-radius(0.35em);
+    box-sizing: border-box;
+    padding: 0em;
+    display: none;
+		/* height adjustments */
+    @include screen-small { 
+   		 	height: 2.5em;
+        line-height: 1em;
+        margin: { top: 0.2em; bottom: 0em; }; 
+    };
+    @include screen-medium { 
+        height: 3em;
+        line-height: 2em;
+				max-width: 28em;
+        float: left;
+        margin: { top: 0.5em; bottom: 0.5em; }; 
+    };
+    @include screen-large { 
+        height: 3em;
+        line-height: 2em;
+				max-width: 28em;
+        float: left;
+        margin: { top: 0.5em; bottom: 0.5em; }; 
+    };
+}

@@ -1,0 +1,500 @@
+/* Orientation Home Styles
+ *
+ * This is the style sheet for the home page.
+ *
+ * author:  John Liu
+ * version: 0.0.1
+ */
+
+@import 'compass';
+@import 'library';
+@import 'core';
+
+$home-banner-image: 'home-banner.jpg';
+$home-banner-scaling-s: 0.85;
+$home-banner-scaling-m: 0.85;
+$home-banner-scaling-l: 1.25;
+$logo-scaling: 0.275;
+
+/* Core
+ * ----
+ */
+
+.home {
+    h1 {
+        margin-bottom: 0.5em;
+    }
+
+    button.go {
+        font-size: 2em;
+    }
+
+    @include screen-small {
+        text-align: center;
+        ul, ol {
+            padding-left: 0;
+            li { list-style-type: none; }
+        }
+    };
+    @include screen-medium {
+        text-align: left;
+        ul, ol {
+            padding-left: 1.5em;
+            li { list-style-type: disc; }
+        }
+    };
+    @include screen-large {
+        text-align: left;
+        ul, ol {
+            padding-left: 1.5em;
+            li { list-style-type: disc; }
+        }
+    };
+
+    .full {
+        text-align: center;
+    }
+
+    .subheader {
+        .third {
+            text-align: center;
+
+            h1, p {
+                margin: 0;
+            }
+
+            &.subheader-text {
+                @include screen-small {
+                    margin: { top: 0.5em;  bottom: 0.5em; };
+                };
+                @include screen-medium {
+                    margin: { top: 4em;    bottom: 4em; };
+                };
+                @include screen-large {
+                    margin: { top: 3.5em;  bottom: 3.5em; };
+                };
+            }
+        }
+    }
+
+    .small-spacer {
+        height: 0.5em;
+    }
+}
+
+
+.home-banner {
+    background: {
+        image: image-url($home-banner-image);
+        size: cover;
+        position: center;
+    };
+    width: 100%;
+
+    @include screen-small {
+        height: image-scaled-height($home-banner-image, $home-banner-scaling-s);
+    };
+    @include screen-medium {
+        height: image-scaled-height($home-banner-image, $home-banner-scaling-m);
+    };
+    @include screen-large {
+        height: image-scaled-height($home-banner-image, $home-banner-scaling-l);
+    };
+
+    .home-message {
+        background-color: transparentize($white, 0.1);
+        text-align: center;
+        @include screen-small   { margin: { top: 0em; bottom: 0em; }; };
+        @include screen-medium  { margin: { top: 1em; bottom: 1em; }; };
+        @include screen-large   { margin: { top: 2em; bottom: 2em; }; };
+
+        h1 {
+            text-align: center;
+            font: {
+                weight: $font-weight-bold;
+                size: 1.6em;
+            };
+        }
+
+        .action-button {
+            text-align: center;
+        }
+        
+        .popposition {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: transparentize($black, 0.1);
+            &.hidden {
+                @include transition(all 0.5s, z-index 0s ease 0.5s);
+                opacity: 0;
+                z-index: -1;
+
+            };
+
+            &.showing {
+                @include transition(all 0.5s, z-index 0s);
+                opacity: 1;
+                z-index: 20;
+            };
+
+            .popbox-wrap {
+                @include screen-small{
+                   width:300px;
+                   margin:40px auto;
+                };
+
+                @include screen-medium{
+                   width:400px;
+                   margin:55px auto;
+                };
+
+                @include screen-large{
+                   width: 500px;
+                   margin:70px auto;
+                };
+                text-align:center;
+            };
+
+            .popbox-contain {
+                background-color: $white;
+                padding: 20px;
+                border-radius:4px;
+
+                .popbox-close {
+                    @include screen-small{
+                        margin-left:7.75em;
+                        margin-top:-3em;
+                    };
+
+                    @include screen-medium{
+                        margin-left:10em;
+                        margin-top:-1em;
+                    };
+
+                    @include screen-large{
+                        margin-left:14.5em;
+                        margin-top:-1em;
+                    };
+
+                    font-size:30px;
+                    padding-left:0.2em;
+                    padding-right:0.2em;
+                    padding-top:0.08em;
+                    padding-bottom:0.02em;
+                    background-color:$white;
+                    color:$purple;
+                };
+                .submission-box{
+                    margin-top:1em;
+                    margin-bottom:1em;
+                }
+
+                
+            };
+
+        }
+
+
+    }
+
+
+
+    /* for displaying snapchat addme message in banner */
+    .main-messageBox {
+        
+        position: relative;
+				
+        /* message box adjustment */
+        .home-snapchat-message{
+            
+					  background-color: $white;
+            @include screen-small {
+                text-align: right;
+				    };
+				    @include screen-medium {
+				        text-align: right;
+				    };
+				    @include screen-large {
+				        text-align: right;
+				    };
+						
+        }
+        
+    }
+}
+
+.snapchat-banner-icon {
+
+    display: inline-block;
+    left: 0.25em;
+    background: {
+        image: image-url($snapchat-image);
+        size: contain;
+        position: center;
+        repeat: no-repeat;
+    };
+    position: relative;
+    cursor: pointer;
+    @include screen-small {
+        height: 23px;
+        width: 23px;
+        top: 0.5em;        
+	  }
+		@include screen-medium {
+        height: 23px;
+        width: 23px;
+        top: 0.5em; 
+		}
+		@include screen-large {
+        height: 29px;
+        width: 29px;
+        top: 0.45em;
+		}
+}
+
+
+.home-misc {
+    position: relative;
+
+    @include screen-small {
+        height: 10em;
+        line-height: 2.25em;
+    };
+    @include screen-medium {
+        height: 4em;
+        line-height: 4em;
+    };
+    @include screen-large {
+        height: 4em;
+        line-height: 4em;
+    };
+
+    .side {
+        @include screen-small {
+            margin-top: 5em;
+        };
+        @include screen-medium {
+            margin-top: 0;
+        };
+        @include screen-large {
+            margin-top: 0;
+        };
+    }
+
+    .main {
+        @include screen-small {
+            text-align: center;
+        };
+        @include screen-medium {
+            text-align: right;
+        };
+        @include screen-large {
+            text-align: right;
+        };
+
+        .icon {
+            margin: { left: 0.5em; right: 0.5em; };
+        }
+
+        .follow-text {
+            @include screen-small   { display: none; };
+            @include screen-medium  { display: inline; };
+            @include screen-large   { display: inline; };
+        }
+    }
+
+    .days-remaining-text {
+        @include screen-small {
+            margin-left: 0;
+        };
+        @include screen-medium {
+            margin-left: 7em;
+        };
+        @include screen-large {
+            margin-left: 7em;
+        };
+    }
+
+    .number {
+        @include box-shadow($box-shadow-args $gray);
+
+        display: inline-block;
+        position: absolute;
+        background-color: $white-alt;
+        text-align: center;
+        border-radius: 50%;
+        font-weight: $font-weight-bold;
+        color: $purple;
+        height: 2em;
+        line-height: 2em;
+        width: 2em;
+
+        @include screen-small {
+            font-size: 2em;
+            top: 0.5em;
+            left: 50%;
+            margin-left: -1em;
+        };
+        @include screen-medium {
+            font-size: 3em;
+            top: -0.333em;
+            left: auto;
+            margin-left: 0;
+        };
+        @include screen-large {
+            font-size: 3em;
+            top: -0.333em;
+            left: auto;
+            margin-left: 0;
+        };
+    }
+}
+
+.home-reasons {
+    padding: { top: 3em; bottom: 3em; };
+
+    .step {
+        text-align: left;
+        margin-top: 2em;
+
+
+        @include screen-small {
+            padding: 2em;
+        };
+        @include screen-medium {
+            padding: 3.5em;
+        };
+        @include screen-large {
+            padding: 3.5em;
+        };
+
+        h2 {
+            text-align: left;
+            margin-left: 0;
+        };
+
+        &:before {
+            @include screen-small {
+                font-size: 1.5em;
+                font-size: 1.25rem;
+            };
+            @include screen-medium {
+                font-size: 2em;
+                font-size: 1.75rem;
+                top: 1.5em;
+            };
+            @include screen-large {
+                font-size: 2em;
+                font-size: 2.25rem;
+                top: 1.5em;
+            };
+        };
+
+        &.top-half {
+            margin-bottom: 0;
+            padding-bottom: 2em;
+            border-bottom: { left-radius: 0; right-radius:  0 };
+        };
+
+        &.bottom-half {
+            cursor: pointer;
+            margin-top: 0;
+            padding: { top: 1em; bottom: 1em; };
+            border-top: { left-radius: 0; right-radius:  0 };
+            background-color: $white-alt;
+            text-align: center;
+
+            &:before {
+                display: none;
+            };
+        };
+    };
+}
+
+.home-video {
+    @include transition(all 0.5s);
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: transparentize($black, 0.1);
+
+    iframe {
+        @include transition(all 0.5s);
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        z-index: 20;
+
+        @include screen-small {
+            height: 180px;
+            width: 320px;
+            margin-top: (-180px / 2);
+            margin-left: (-320px / 2);
+        };
+        @include screen-medium {
+            height: 337px;
+            width: 600px;
+            margin-top: (-337px / 2);
+            margin-left: (-600px / 2);
+        };
+        @include screen-large {
+            height: 450px;
+            width: 800px;
+            margin-top: (-450px / 2);
+            margin-left: (-800px / 2);
+        };
+    };
+
+    &.hidden {
+        @include transition(all 0.5s, z-index 0s ease 0.5s);
+        opacity: 0;
+        z-index: -1;
+
+        iframe {
+            @include transform(scale(0, 0));
+            @include opacity(0);
+        }
+    };
+
+    &.showing {
+        @include transition(all 0.5s, z-index 0s);
+        opacity: 1;
+        z-index: 20;
+
+        iframe {
+            @include transform(scale(1, 1));
+            @include opacity(1);
+        }
+    };
+}
+
+.home-logo {
+    background: {
+        image: image-url($logo);
+        size: contain;
+        position: center;
+        repeat: no-repeat;
+    };
+
+    height: image-scaled-height($logo, $logo-scaling);
+    margin: 0;
+}
+.home-logo-large {
+    background: {
+        image: image-url($logo);
+        size: contain;
+        position: center;
+        repeat: no-repeat;
+    };
+
+    height: image-scaled-height($logo, .5);
+    margin: 0;
+}
+
+

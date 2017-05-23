@@ -1,0 +1,55 @@
+/* Orientation Header Styles
+ *
+ * This is the stylesheet for the header view element.
+ *
+ * author:  John Liu
+ * version: 0.0.1
+ */
+
+@import 'compass';
+@import 'library';
+@import 'core';
+
+.header, .header-spacer {
+    @include box-shadow($box-shadow-args $white-alt);
+
+    background-color: $white-translucent;
+    padding: 1em;
+
+    @include screen-small   { text-align: left; }
+    @include screen-medium  { text-align: center; }
+    @include screen-large   { text-align: center; }
+    @include print          { display: none; }
+
+    .selected {
+        font-weight: $font-weight-bold;
+    }
+}
+
+.header-spacer {
+    visibility: hidden;
+    @include screen-small {
+        display: none;
+    }
+    @include screen-medium {
+        display: inherit;
+    }
+    @include screen-large {
+        display: inherit;
+    }
+}
+
+.header-wrapper {
+    width: 100%;
+    top: 0;
+    z-index: 10;
+    @include screen-small {
+        position: static;
+    }
+    @include screen-medium {
+        position: fixed;
+    }
+    @include screen-large {
+        position: fixed;
+    }
+}

@@ -1,0 +1,220 @@
+<div class="spaced">
+    <section class="section">
+        <div class="content row">
+            <div class="side col">
+                {{#linkTo 'index'}}<div class="registration-logo"></div>{{/linkTo}}
+            </div>
+
+            <div class="main col">
+                <section class="box normal">
+                    <h1><i class="icon-question-sign"></i> FAQs</h1>
+                    <p>
+                        If you have any questions that weren't answered in this FAQ, leave your question below or send us an email at
+                        <a href="mailto:support@orientation.skule.ca">support@orientation.skule.ca</a>.
+                    </p>
+
+                    {{#formFor controller wrapper="orientation"}}
+                    <div  {{bindAttr class=":faq_dropbox_wrapper isAsking:showing:hidden"}}>
+                        {{#input name}}
+                            {{labelField name text="Name:" }}
+                            {{inputField name placeholder="Harry"}}
+                        {{/input}}
+                        {{#input email}}
+                            {{labelField email text="Email Address:" }}
+                            {{inputField email placeholder="hype@fweek.skule.ca"}}
+                        {{/input}}
+                        <label>Questions:</label>
+                        {{#input question}}
+                            {{inputField question as=text placeholder="Put your questions/concerns/comments here"}}
+                        {{/input}}
+                        <div class="submit_wrapper">
+                            <div id="error_message" class="message">
+                                <h5 style="color:crimson;" >* Error: Invalid Email!</h5>
+                            </div>
+                            <div id="spam_message" class="message">
+                                <h5 style="color:crimson;" >* Error: Submit too frequent. (We know you are real hype)</h5>
+                            </div>
+                            <div id="send_error_msg" class="message">
+                                <h5 style="color:crimson;" >* Error: Seems like your request could not get through.</h5>
+                            </div>
+                            <button {{action "submit"}} class="highlight" {{bindAttr disabled=isDisable }}>
+                                Submit!
+                            </button>
+                        </div>
+                        
+                    </div>
+                    {{/formFor}}
+                    
+                    <div {{bindAttr class=":finish_asking_wrapper isAsking:hidden:showing"}}> 
+                        <h3 style="color:green;">All Done! We will get back to you ASAP!</h3> 
+                    </div>
+                    <p>
+                        P.S: We'll have more details on each event (and the F!rosh Kits) for you as we get closer
+                        and closer to F!rosh Week. Stay tuned!
+                    </p>
+                </section>
+            </div>
+        </div>
+
+        <div class="content row">
+            <div class="half col">
+                <section class="box normal">
+                    <h2><i class="icon-info-sign"></i> General Information</h2>
+                    <h3>What is F!rosh Week?</h3>
+                    <p>
+                        F!rosh week is the first week of the academic year at U of T Engineering, and is accompanied by
+                        a wide range of social events that are held to help orient and welcome new students.
+                    </p>
+
+                    <h3>Why should I go?</h3>
+                    <p>
+                        Simply because F!rosh Week will be the bestest most awesome time you'll have at Skule&trade;! Also
+                        it's a great way to make friends right off the bat and get to know the campus!
+                    </p>
+
+                    <h3>What's the deal with the exclamation mark in F!rosh?</h3>
+                    <p>
+                        It's to show you how fun it is - the exclamation couldn't even wait until the end of the word.
+                    </p>
+
+                    <h3>What’s up with the word Skule&trade;?</h3>
+                    <p>
+                        Pronounced “school”, it’s just our way of spelling it (because engineers can’t spell).
+                    </p>
+                </section>
+
+                <section class="box normal">
+                    <h2><i class="icon-suitcase"></i> F!rosh Kits and Registration</h2>
+                    <h3>What is a F!rosh Kit?</h3>
+                    <p>
+                        It's both a collection of handy stuff that you should own and your admission to F!rosh Week.
+                        It is strongly advised that you purchase one.
+                    </p>
+
+                    <!--h3>Where do I get my F!rosh Kit?</h3>
+                    <p>
+                        You get a F!rosh Kit by registering! Register by clicking Register Now at the top of the page.
+                    </p-->
+
+                    <h3>What is IN a F!rosh Kit?</h3>
+                    <p>
+                        A ton of cool stuff! You get a hard hat, a clipboard, a free yearbook at the end of the year,
+                        and much more!
+                    </p>
+
+                    <h3>Do I have to buy a F!rosh Kit?</h3>
+                    <p>
+                        If you want to participate in F!rosh Week, then yes. The revenues from the kit allow us to pay
+                        for all the crazy stuff you will get to do. It is worth it. Plus it is a memento of your
+                        entrance to the greatest university in Canada!
+                    </p>
+                    <p>
+                        Lots of the stuff we have planned for you costs money. We tried growing money, but it hasn't
+                        worked out yet. So we conned some retailers into selling us cool stuff at rock bottom prices,
+                        and in turn are selling it to you. Our F!rosh kits are both the biggest and the cheapest on
+                        campus.
+                    </p>
+
+                    <h3>What is the difference between signing up and purchasing a F!rosh kit?</h3>
+                    <p>
+                        Nothing. By signing up you purchase a F!rosh kit, and by purchasing a F!rosh kit you sign up.
+                    </p>
+
+                    <h3>Are there any events that I can attend without buying a F!rosh kit?</h3>
+                    <p>
+                        Yes. You can attend faculty events and class on Thursday and Friday. However, we don't think
+                        these are much fun.
+                    </p>
+
+                    <h3>My residence-college also wants me to buy their frosh kit. What should I do?</h3>
+                    <p>
+                        Buy ours, not theirs. It is cheaper, better, and our orientation is the best on campus. Also,
+                        I heard your residence-college people say you look funny! You should get back at them by doing
+                        Engineering orientation.
+                    </p>
+                </section>
+            </div>
+
+            <div class="half col">
+                <section class="box normal">
+                    <h2><i class="icon-user"></i> Accessibility</h2>
+                    <h3>Will accessibility services be provided for those who need it?</h3>
+                    <p>
+                        Yes. As long as you let us know what you need from us in the "Accessibility Information" box
+                        in the registration form, we will make arrangements to accomodate you. To give us enough time
+                        to do so, please register before August 20.
+                    </p>
+                </section>
+
+                <section class="box normal">
+                    <h2><i class="icon-time"></i> The Week of F!rosh Week</h2>
+                    <h3>What do I need to bring/wear for F!rosh Week?</h3>
+                    <p>
+                        Wear old clothes. F!rosh Week can get pretty messy. You might want to dye yourself purple
+                        without also dyeing everything you're wearing, so wear an old swimsuit or something similar.
+                        Also, wear reasonably comfortable shoes and socks, as you'll be doing a lot of walking.
+                        Finally, don't forget to dress for the weather, as most of the events are outside. This
+                        includes sunblock!
+                    </p>
+
+                    <h3>Also, remember to bring your F!rosh Kit ticket on September 5th!</h3>
+                    <p>
+                        Things you should NOT bring are: Large bags, valuable items (iPods, Rolexes, PSPs, laptops
+                        etc), lunch (you’ll be fed! But you can bring light snacks if you eat a lot). Remember,
+                        you will be walking around ALL DAY and we will NOT be providing storage (plus, you will
+                        already be carrying your humongous F!rosh Kit)!
+                    </p>
+
+                    <h3>Do I have to go to every event?</h3>
+                    <p>
+                        No, but you really should. For one thing, most events start where the previous event ended,
+                        so if you skipped an event, you might have trouble finding your group. Or all the groups.
+                        Also, every event has some purpose. By going to all of them, you'll learn your way around
+                        campus, be in the F!rosh picture, see what the fuss is over the purple dye, and generally
+                        meet more people and have more fun.
+                    </p>
+
+                    <h3>What's up with purple dye?</h3>
+                    <p>
+                        <!-- TODO(johnliu): traditions page -->
+                        You will be encouraged to dye purple (in the spirit of the engineering tradition!)
+                        <!-- See: Traditions)--> The process may irritate sensitive skin.
+                        It will stay on for a couple days (depending on your washing habits!)
+                    </p>
+
+                    <h3>What if I get hurt?</h3>
+                    <p>
+                        There will be members of Skule Patrol at every event and with every group. Skule Patrol
+                        members are trained in first aid and will have first aid kits. They can be identified by
+                        their snazzy red T-shirts.
+                    </p>
+
+                    <h3>Where do I go on the first day?</h3>
+                    <p>
+                        Convocation Hall at 31 King's College Circle
+                    </p>
+                    <p>
+                        <iframe width="100%"
+                                height="300"
+                                frameborder="0"
+                                scrolling="no"
+                                marginheight="0"
+                                marginwidth="0"
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1443.19161249509!2d-79.39489421779095!3d43.66099911026702!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882b34b88cfce265%3A0x5b6a860f6f34deaa!2sKing&#39;s+College+Rd+%26+Galbraith+Rd%2C+Toronto%2C+ON+M5S!5e0!3m2!1sen!2sca!4v1441434788369">
+                        </iframe>
+                    </p>
+                </section>
+
+                <section class="box normal">
+                    <h2><i class="icon-group"></i> Organizer</h2>
+                    <h3>Who runs F!rosh Week?</h3>
+                    <p>
+                        F!rosh Week is run by the Orientation Committee, a division of the University of Toronto
+                        Engineering Society, the student government body of the Faculty of Applied Science and
+                        Engineering.
+                    </p>
+                </section>
+            </div>
+        </div>
+    </section>
+</div>
